@@ -1,3 +1,4 @@
+import asyncio
 import os
 import httpx
 from dataclasses import dataclass
@@ -27,14 +28,22 @@ def get_user() -> OwnerRezApiUser:
                            token=os.environ.get('owner_rez_token', None))
 
 
-def get_template(request_url: furl, auth_user: OwnerRezApiUser) -> dict:
+def get_authorized(request_url: furl, auth_user: OwnerRezApiUser) -> dict:
     with httpx.Client(headers=auth_user.headers()) as client:
         r = client.get(request_url.url, auth=auth_user.get_auth())
         r.raise_for_status()
         return r.json()
 
 
-# Press the green button in the gutter to run the script.
+async def get_authorized_async(request_url: furl, auth_user: OwnerRezApiUser) -> dict:
+    async with httpx.AsyncClient(headers=auth_user.headers()) as client:
+        r = await client.get(request_url.url, auth=auth_user.get_auth())
+        r.raise_for_status()
+        return r.json()
+
+async def async_main():
+    print(get_authorized(furl(API_URL).set(path=f'v2/fielddefinitions'), get_user()))
+    print(await get_authorized_async(furl(API_URL).set(path=f'v2/fielddefinitions'), get_user()))
+
 if __name__ == '__main__':
-    api_user = get_user()
-    print(get_template(furl(API_URL).set(path=f'v2/fielddefinitions'), api_user))
+     asyncio.run(async_main())
