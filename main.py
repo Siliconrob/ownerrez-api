@@ -2,7 +2,7 @@ import asyncio
 import datetime
 import arrow
 import owner_rez_api_user as orez
-import template_requests as api
+import owner_rez_api_template_requests as api
 from furl import furl
 
 API_URL = "https://api.ownerreservations.com"
