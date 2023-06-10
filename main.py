@@ -4,6 +4,7 @@ import arrow
 import owner_rez_api_user as orez
 import owner_rez_api_template_requests as api
 from furl import furl
+from faker import Faker
 
 API_URL = "https://api.ownerreservations.com"
 
@@ -42,7 +43,14 @@ async def run_gets_async(start_date: str, start_id: int, input_user: orez.OwnerR
     print(await api.get_async(furl(API_URL).set(path=f'v2/webhooksubscriptions'), input_user))
 
 
+async def run_posts_async(input_user: orez.OwnerRezApiUser):
+    field_faker = Faker()
+    new_field_def = dict(code=field_faker.color_name(), description=field_faker.text(), name=field_faker.text(), type="booking")
+    print(await api.post_async(furl(API_URL).set(path=f'v2/fielddefinitions'), new_field_def, input_user))
+
+
 async def async_main():
+    # await run_posts_async(orez.get_user())
     await run_gets_async(default_start_date(), 1, orez.get_user())
     # print(get_authorized(furl(API_URL).set(path=f'v2/fielddefinitions'), get_user()))
 
