@@ -16,7 +16,7 @@ class OwnerRezApiUser:
         return {'user-agent': self.agent}
 
 
-def get_user() -> OwnerRezApiUser:
+def get_env_user() -> OwnerRezApiUser:
     return OwnerRezApiUser(agent=os.environ.get('owner_rez_user_agent', 'api_python_agent'),
                            username=os.environ.get('owner_rez_username', None),
                            token=os.environ.get('owner_rez_token', None))

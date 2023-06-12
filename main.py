@@ -1,8 +1,7 @@
 import asyncio
 import datetime
 import arrow
-import owner_rez_api_user as orez
-import owner_rez_api_template_requests as api
+from src import owner_rez_api_template_requests as api, owner_rez_api_user as orez
 from furl import furl
 from faker import Faker
 
@@ -51,7 +50,7 @@ async def run_posts_async(input_user: orez.OwnerRezApiUser):
 
 async def async_main():
     # await run_posts_async(orez.get_user())
-    await run_gets_async(default_start_date(), 1, orez.get_user())
+    await run_gets_async(default_start_date(), 1, orez.get_env_user())
     # print(get_authorized(furl(API_URL).set(path=f'v2/fielddefinitions'), get_user()))
 
 
