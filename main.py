@@ -1,9 +1,10 @@
 import asyncio
 import datetime
 import arrow
-from src import owner_rez_api_template_requests as api, owner_rez_api_user as orez
-from furl import furl
 from faker import Faker
+from furl import furl
+
+from src import owner_rez_api_template_requests as api, owner_rez_api_user as orez
 
 API_URL = "https://api.ownerreservations.com"
 
@@ -50,7 +51,9 @@ async def run_posts_async(input_user: orez.OwnerRezApiUser):
 
 async def async_main():
     # await run_posts_async(orez.get_user())
-    await run_gets_async(default_start_date(), 1, orez.get_env_user())
+    api_user = orez.get_env_user()
+    if api_user.is_valid():
+        await run_gets_async(default_start_date(), 1, api_user)
     # print(get_authorized(furl(API_URL).set(path=f'v2/fielddefinitions'), get_user()))
 
 
