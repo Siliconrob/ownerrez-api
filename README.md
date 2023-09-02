@@ -2,7 +2,7 @@
 
 NOTE: You will need to obtain a Personal Access Token for the API  [https://www.ownerreservations.com/support/articles/api-auth#personal-access-tokens](https://www.ownerreservations.com/support/articles/api-auth#personal-access-tokens).  Without a token you will not be able to successfully obtain valid API results.
 
-### Windows setup Solcast API Key
+### Windows setup OwnerRez API Key
 
 Setup System/User `environment variable`.  Details on advanced editing [StackOverflow superuser walkthrough](https://superuser.com/questions/949560/how-do-i-set-system-environment-variables-in-windows-10)
 
