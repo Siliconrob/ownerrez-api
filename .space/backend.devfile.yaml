@@ -23,7 +23,7 @@ attributes:
       # create a snapshot every Sunday (only for main branch)
       startOn:
       - type: schedule
-        cron: '0 0 0 ? * SUN *'
+        cron: '0 0 0 ? 0 12 * * *'
       # run additional warmup script (IDE indexes will be built anyway)
       script:
         ./scripts/warmup.sh
