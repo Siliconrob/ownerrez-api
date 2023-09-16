@@ -29,7 +29,7 @@ attributes:
         ./scripts/warmup.sh
     # Parameters and secretes required by a dev environment
     # e.g., credentials to an external service
-    requiredParameters:
+    # requiredParameters:
     # (Required) the name of the environment variable
     # that will be available in the dev environment
     requiredSecrets:
