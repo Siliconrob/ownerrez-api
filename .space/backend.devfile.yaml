@@ -32,11 +32,11 @@ attributes:
     requiredParameters:
     # (Required) the name of the environment variable
     # that will be available in the dev environment
-    - name: orez_username
-      description: 'OwnerRez API Token Name'
     requiredSecrets:
     - name: orez_password
       description: 'OwnerRez API Token Password'
+    - name: orez_username
+      description: 'OwnerRez API Token Name'
 components:
 - name: dev-container
   # Dev environment container config
