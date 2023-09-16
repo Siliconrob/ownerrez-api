@@ -1,13 +1,14 @@
 from datetime import timedelta
-
 import httpx
 import stamina
 from furl import furl
-
-from src.owner_rez_api_user import OwnerRezApiUser
+from src.api_user import OwnerRezApiUser
 
 max_retry_attempts = 3
 timeout_delay = timedelta(seconds=10)
+
+API_URL = "https://api.ownerreservations.com"
+
 
 
 @stamina.retry(on=httpx.HTTPError, attempts=max_retry_attempts, timeout=timeout_delay)
