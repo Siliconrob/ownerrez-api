@@ -1,11 +1,11 @@
 [build-system]
-requires = ["setuptools>=61.0.0", "wheel"]
+requires = ["setuptools>=70.0.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 
 [project]
 name = "ownerrez-api"
-version = "0.0.1"
+version = "0.0.2"
 description = "Helper for Application Programming Development on OwnerRez"
 readme = "README.md"
 authors = [{ name = "Robin Michael", email = "siliconrob@siliconheaven.net" }]
@@ -19,9 +19,9 @@ classifiers = [
 ]
 keywords = ["OwnerRez", "API"]
 
-dependencies = [ "furl", "httpx", "stamina", "" ]
+dependencies = [ "furl", "httpx", "stamina", "pep508" ]
 
-requires-python = ">=3.11"
+requires-python = ">=3.13"
 
 
 [project.urls]

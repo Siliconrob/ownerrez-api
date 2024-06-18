@@ -7,8 +7,7 @@ from src.api_user import OwnerRezApiUser
 max_retry_attempts = 3
 timeout_delay = timedelta(seconds=10)
 
-API_URL = "https://api.ownerreservations.com"
-
+API_URL = "https://api.ownerrez.com"
 
 
 @stamina.retry(on=httpx.HTTPError, attempts=max_retry_attempts, timeout=timeout_delay)

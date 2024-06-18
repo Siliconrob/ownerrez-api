@@ -23,10 +23,12 @@ class IntegrationTestCases(unittest.TestCase):
     def test_something(self):
         self.assertEqual(True, False)  # add assertion here
 
-    def run_gets(self, start_date: str, start_id: int, input_user: OwnerRezApiUser):
+    @staticmethod
+    def run_gets(start_date: str, start_id: int, input_user: OwnerRezApiUser) -> object:
         print(get(furl(API_URL).set(path=f'v2/bookings', args=dict(since_utc=start_date)), input_user))
         print(get(furl(API_URL).set(path=f'v2/fielddefinitions'), input_user))
-        print(get(furl(API_URL).set(path=f'v2/fields', args=dict(entity_type='property', entity_id=start_id)), input_user))
+        print(get(furl(API_URL).set(path=f'v2/fields', args=dict(entity_type='property', entity_id=start_id)),
+                  input_user))
         print(get(furl(API_URL).set(path=f'v2/guests', args=dict(created_since_utc=start_date)), input_user))
         print(get(furl(API_URL).set(path=f'v2/inquiries', args=dict(since_utc=start_date)), input_user))
         print(get(furl(API_URL).set(path=f'v2/listings'), input_user))
@@ -37,17 +39,21 @@ class IntegrationTestCases(unittest.TestCase):
         print(get(furl(API_URL).set(path=f'v2/users/me'), input_user))
         print(get(furl(API_URL).set(path=f'v2/webhooksubscriptions'), input_user))
 
-
-    async def run_gets_async(self, start_date: str, start_id: int, input_user: OwnerRezApiUser):
+    @staticmethod
+    async def run_gets_async(start_date: str, start_id: int, input_user: OwnerRezApiUser) -> object:
         print(await get_async(furl(API_URL).set(path=f'v2/bookings', args=dict(since_utc=start_date)), input_user))
         print(await get_async(furl(API_URL).set(path=f'v2/fielddefinitions'), input_user))
-        print(await get_async(furl(API_URL).set(path=f'v2/fields', args=dict(entity_type='property', entity_id=start_id)), input_user))
-        print(await get_async(furl(API_URL).set(path=f'v2/guests', args=dict(created_since_utc=start_date)), input_user))
+        print(
+            await get_async(furl(API_URL).set(path=f'v2/fields', args=dict(entity_type='property', entity_id=start_id)),
+                            input_user))
+        print(
+            await get_async(furl(API_URL).set(path=f'v2/guests', args=dict(created_since_utc=start_date)), input_user))
         print(await get_async(furl(API_URL).set(path=f'v2/inquiries', args=dict(since_utc=start_date)), input_user))
         print(await get_async(furl(API_URL).set(path=f'v2/listings'), input_user))
         print(await get_async(furl(API_URL).set(path=f'v2/owners'), input_user))
         print(await get_async(furl(API_URL).set(path=f'v2/properties'), input_user))
-        print(await get_async(furl(API_URL).set(path=f'v2/quotes', args=dict(created_since_utc=start_date)), input_user))
+        print(
+            await get_async(furl(API_URL).set(path=f'v2/quotes', args=dict(created_since_utc=start_date)), input_user))
         print(await get_async(furl(API_URL).set(path=f'v2/tagdefinitions', args=dict(active=True)), input_user))
         print(await get_async(furl(API_URL).set(path=f'v2/users/me'), input_user))
         print(await get_async(furl(API_URL).set(path=f'v2/webhooksubscriptions'), input_user))
